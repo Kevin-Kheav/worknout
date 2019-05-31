@@ -14,7 +14,11 @@ L'application est utilisable grace à son IHM, mais propose aussi une API permet
 Elle propose aussi une opération permettant de voter pour un évènement, et une autre pour récupérer la liste de participants d'un événement.
 
 
+----
+
+
 L'application nécéssite l'existance d'une base de donnée nommé "workout"
+
 Fichier de configuration pour la connexion à la base de donnée : /api/src/main/resources/application.properties
 
 
