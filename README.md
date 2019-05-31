@@ -2,7 +2,7 @@
 ### By KHEAV Kevin - MUGUET Nicolas
 
 
-  L'objectif de ce dernier TP de MDI était de construire une application constituée d'un backend réalisé avec Spring, et un frontend fait avec Vue.js
+  L'objectif de ce dernier TP de MDI était de construire une application constituée d'un backend réalisé avec Spring, et un frontend fait avec Vue.js.
 De plus, pour la persistance des données, nous devions mettre en place une base de données MySQL et utiliser l'ORM JPA.
 
 Nous avons donc développé l'application "Worknout", réunissant toutes ces technologies. Worknout est une application simplifiant l'organisation d'événements ou de réunions au sein d'une entreprise ou organisation.
