@@ -12,3 +12,10 @@ Les utilisateurs peuvent ensuite voter pour un évènement, ce qui les ajoutera 
 
 L'application est utilisable grace à son IHM, mais propose aussi une API permettant l'ajout, la récupération, la mise à jour et la suppression d'un événement ou d'un utilisateur.
 Elle propose aussi une opération permettant de voter pour un évènement, et une autre pour récupérer la liste de participants d'un événement.
+
+
+L'application nécéssite l'existance d'une base de donnée nommé "workout"
+Fichier de configuration pour la connexion à la base de donnée : /api/src/main/resources/application.properties
+
+
+Voir le Readme dans /web pour lancer le front
