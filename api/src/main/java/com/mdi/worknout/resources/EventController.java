@@ -23,6 +23,9 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping("/events")
     public ResponseEntity<List<Event>> getAllEvents() {
         List<Event> events = eventRepository.findAll(Sort.by(Sort.Direction.ASC,"date"));
@@ -63,32 +66,32 @@ public class EventController {
         if (!oldEvent.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        else{
             Event UpdatedEvent = oldEvent.get();
             UpdatedEvent.setTitle(event.getTitle());
             UpdatedEvent.setDescription(event.getDescription());
             UpdatedEvent.setLocation(event.getLocation());
             UpdatedEvent.setDate(event.getDate());
             return new ResponseEntity<>(eventRepository.save(UpdatedEvent), HttpStatus.OK);
-        }
     }
-/*
+
     //ajout un user a un evenement
-    @PostMapping("/events/{id}/vote")
+    @PutMapping("/events/{id}/vote")
     public ResponseEntity<Event> postUser(@PathVariable("id") long id, @Valid @RequestBody User user) {
         Optional<Event> event = eventRepository.findById(id);
         if (!event.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        User savedUser = UserRepository.save(user);
-
-        //Event.get().getListUsers().add(savedUser)
-        return new ResponseEntity<>(HttpStatus.OK);
+        User savedUser = userRepository.save(user);
+        List usersList = event.get().getListUsers();
+        usersList.add(savedUser);
+        Event UpdatedEvent = event.get();
+        UpdatedEvent.setListUsers(usersList);
+        return new ResponseEntity<>(eventRepository.save(UpdatedEvent), HttpStatus.OK);
     }
-*/
+
     //Liste les users d'un evenement
     @GetMapping("/events/{id}/users")
-    public ResponseEntity<List<User>> getUsers(@PathVariable("id") long id, @Valid @RequestBody User user) {
+    public ResponseEntity<List<User>> getUsers(@PathVariable("id") long id) {
         Optional<Event> event = eventRepository.findById(id);
         if (!event.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
