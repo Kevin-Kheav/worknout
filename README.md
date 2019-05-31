@@ -17,9 +17,9 @@ Elle propose aussi une opération permettant de voter pour un évènement, et un
 ----
 
 
-L'application nécéssite l'existance d'une base de donnée nommé "workout"
+L'application nécéssite l'existance d'une base de données nommée "workout"
 
-Fichier de configuration pour la connexion à la base de donnée : /api/src/main/resources/application.properties
+Fichier de configuration pour la connexion à la base de données : /api/src/main/resources/application.properties
 
 
 Voir le Readme dans /web pour lancer le front
