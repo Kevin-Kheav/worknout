@@ -5,7 +5,7 @@
             <h3>Gestionnaire d'évènements</h3>
         </div>
         <nav>
-            <router-link class="btn btn-primary" to="/">Acceuil</router-link>
+            <router-link class="btn btn-primary" to="/">Accueil</router-link>
             <router-link class="btn btn-primary" to="/event">Voir tous les évènements</router-link>
             <router-link class="btn btn-primary" to="/add">Créer un évènements</router-link>
             

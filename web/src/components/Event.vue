@@ -12,7 +12,11 @@
     </div>
     <div>
       <label>Participant(s): </label> 
-        {{this.event.listUsers}}
+      <ul id="eventParticipants">
+        <li v-for="(user,index) in listUsers" :key="index">
+          {{ user.name }}
+        </li>
+      </ul>
     </div>
   
     <div class="participation">
@@ -44,6 +48,7 @@ export default {
         name: "",
         email: "",
       },
+      listUsers :[]
     };
   },
   methods: {
@@ -56,7 +61,7 @@ export default {
       console.log(data)
       
       http
-        .put("/event/" + this.event.id, data)
+        .put("/events/" + this.event.id+"/vote", data)
         .then(response => {
           this.user.id = response.data.id;
           console.log(response.data);
@@ -65,13 +70,13 @@ export default {
           console.log(e);
         });
     },
-    /*retrieveUsers() {
+    retrieveUsers() {
       console.log('====================================================')
       console.log(this.event)
       http
-        .get("/events/3/users")
+        .get("/events/"+this.event.id+"/users")
         .then(response => {
-          this.users = response.data; 
+          this.listUsers = response.data; 
           console.log(response.data);
         })
         .catch(e => {
@@ -80,7 +85,7 @@ export default {
     },
     refreshList() {
       this.retrieveEvents();
-    },*/
+    },
     parseDate(date){
       let dateSplitted = date.split('T')
       let momentInYear = dateSplitted[0].split('-');
@@ -89,9 +94,9 @@ export default {
     }
     /* eslint-enable no-console */
   },
-  /* mounted() {
+   mounted() {
     this.retrieveUsers();
-  }*/
+  }
 };
 </script>
 
