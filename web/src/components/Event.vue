@@ -24,9 +24,12 @@
       <input type="text" class="form-control" v-model="user.name" placeholder="Nom" id="name" required name="name">
       <input type="text" class="form-control" v-model="user.email" placeholder="Mail" id="email" required email="email">
       </div>
+      <div v-if="error">
+          <p class="error-message">Veuillez remplir tous les champs</p>
+      </div> 
       <span 
         v-on:click="addUser()"
-        class="button is-small btn-primary" id= "particip-btn">Je participe</span>
+        class="btn btn-success" id= "particip-btn">Je participe</span>
       
     </div>
     
@@ -48,17 +51,25 @@ export default {
         name: "",
         email: "",
       },
-      listUsers :[]
+      listUsers :[],
+      error:false
+
     };
   },
   methods: {
     /* eslint-disable no-console */
     addUser() {
-      var data = {
+      if((this.user.name==="")||(this.user.email==="")){
+        this.error=true;
+      }else{
+        console.log("Pass")
+        console.log(this.user)
+        console.log(this.email)
+        this.error=false;
+        var data = {
         name: this.user.name,
         email: this.user.email,
       };
-      console.log(data)
       
       http
         .put("/events/" + this.event.id+"/vote", data)
@@ -69,10 +80,11 @@ export default {
         .catch(e => {
           console.log(e);
         });
+      this.listUsers.push(data);
+      }
+      
     },
     retrieveUsers() {
-      console.log('====================================================')
-      console.log(this.event)
       http
         .get("/events/"+this.event.id+"/users")
         .then(response => {
@@ -96,14 +108,17 @@ export default {
   },
    mounted() {
     this.retrieveUsers();
-  }
+  },
+  watch: {
+    event: function() {
+      this.retrieveUsers()
+    }
+  } 
 };
 </script>
 
 <style>
-.participation{
 
-}
 .user-inputs{
     display:flex;
     margin-bottom: 1rem;
@@ -111,10 +126,5 @@ export default {
 input{
   margin-right:0.3rem;
 }
-#particip-btn{
-  padding: 0.6 rem;
-  padding: 0.3rem;
-  border-radius: 0.5rem;
-  align-self: flex-end
-}
+
 </style>

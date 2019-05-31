@@ -22,12 +22,13 @@ export default {
 <style>
 .homepage {
   display: flex;
-  max-width: 850px;
+  max-width: 1200px;
   margin: auto;
 
 }
 .welcome {
     text-align: center;
-    width: 100%
+    width: 100%;
+    font-size: 1.2rem; 
 }
 </style>

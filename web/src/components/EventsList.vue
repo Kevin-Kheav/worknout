@@ -8,7 +8,7 @@
                             name: 'event-details',
                             params: { event: event, id: event.id }
                         }">
-                            {{event.title}}
+                            {{event.title}} - {{eventDate(event.date)}}
                     </router-link>
                 </li>
             </ul>
@@ -44,6 +44,11 @@ export default {
     },
     refreshList() {
       this.retrieveEvents();
+    },
+    eventDate(date){
+      let dateSplitted = date.split('T')
+      let momentInYear = dateSplitted[0].split('-');
+      return momentInYear[2]+'/'+momentInYear[1]
     }
     /* eslint-enable no-console */
   },

@@ -130,5 +130,8 @@ export default {
 .time{
   display: flex,
 }
+.submitform{
+  margin-bottom: 1rem;
+}
 </style>
 

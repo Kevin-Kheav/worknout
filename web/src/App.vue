@@ -1,8 +1,10 @@
 <template>
     <div id="app" class="container-fluid">
         <div class="site-info">
-            <h1>Work'n'out</h1>
-            <h3>Gestionnaire d'évènements</h3>
+          <div id="app">
+            <img src="./assets/logo.png">
+          </div>
+          <h3>Gestionnaire d'évènements</h3>
         </div>
         <nav>
             <router-link class="btn btn-primary" to="/">Accueil</router-link>
@@ -16,6 +18,7 @@
 </template>
 
 <script>
+
 export default {
   name: "app"
 };
@@ -33,5 +36,14 @@ export default {
 
 .container-fluid {
   text-align: center;
+}
+
+h3 {
+  color: #0ea7c5;
+  font-size: 1.5rem;
+
+}
+img {
+  width: 10rem;
 }
 </style>
